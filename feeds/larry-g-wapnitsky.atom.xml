@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Larry G. Wapnitsky</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/larry-g-wapnitsky.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-20T00:00:00-04:00</updated><entry><title>Mega Product Review Blitz! (part 2)</title><link href="http://localhost:8000/posts/2015/Jul/20/mega-product-review-blitz-part-2.html" rel="alternate"></link><updated>2015-07-20T00:00:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-20:posts/2015/Jul/20/mega-product-review-blitz-part-2.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Larry G. Wapnitsky</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/larry-g-wapnitsky.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-23T00:00:00-04:00</updated><entry><title>Splitting a CSV in PowerShell</title><link href="http://localhost:8000/posts/2015/Jul/23/splitting-a-csv-in-powershell.html" rel="alternate"></link><updated>2015-07-23T00:00:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-23:posts/2015/Jul/23/splitting-a-csv-in-powershell.html</id><summary type="html">
+
+&lt;p&gt;Today I had a need to split some &lt;span class="caps"&gt;CSV&lt;/span&gt; (comma-separated value) files to run on a program that had limits to the size it could read.  I found a number of solutions out there to do what I wanted in PowerShell, but many were a bit more complex than I needed, so I wrote my own.
+&lt;!-- PELICAN END SUMMARY --&gt;&lt;/p&gt;
+&lt;p&gt;To simplify things for my needs, I hard-coded my major variables, but changing this to a cmdlet with modular parameters won&amp;rsquo;t be that&amp;nbsp;difficult.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="x"&gt; = import-csv &amp;quot;file.csv&amp;quot; -Encoding UTF8&lt;/span&gt;
+
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt; = 75&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, using some basic math built in to PowerShell and .&lt;span class="caps"&gt;NET&lt;/span&gt;, I figured out how many files I would be generating, using division, modulo, and floor\ceiling for&amp;nbsp;rounding.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile_split&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="x"&gt; / &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;floor&lt;/span&gt;&lt;span class="x"&gt; = [math]::Floor(&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile_split&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ceiling&lt;/span&gt;&lt;span class="x"&gt; = [math]::Ceiling(&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile_split&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;excess&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="x"&gt; % &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We now start the iteration of the imported &lt;span class="caps"&gt;CSV&lt;/span&gt; file and create the proper number of split files. The value in &lt;em&gt;$excess&lt;/em&gt; lets me know if I need to create an extra file at the&amp;nbsp;end.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="x"&gt; = 0&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt; - 1&lt;/span&gt;
+
+&lt;span class="x"&gt;switch (&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;excess&lt;/span&gt;&lt;span class="x"&gt; -gt 0)&lt;/span&gt;
+&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;true&lt;/span&gt;&lt;span class="x"&gt;   &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;upper&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ceiling&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;false&lt;/span&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;upper&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;floor&lt;/span&gt;&lt;span class="x"&gt; }&lt;/span&gt;
+&lt;span class="x"&gt;}&lt;/span&gt;
+
+&lt;span class="x"&gt;for (&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="x"&gt; = 1; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="x"&gt; -le &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;upper&lt;/span&gt;&lt;span class="x"&gt;; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="x"&gt;++) &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="x"&gt;[&lt;/span&gt;&lt;span class="p"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="x"&gt;..&lt;/span&gt;&lt;span class="p"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="x"&gt;] | export-csv &amp;quot;split&lt;/span&gt;&lt;span class="p"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nv"&gt;csv&lt;/span&gt;&lt;span class="x"&gt;&amp;quot; -notypeinformation -Encoding UTF8&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="x"&gt; += &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="x"&gt; += &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Just that&amp;nbsp;simple!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the full&amp;nbsp;code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="x"&gt; = import-csv &amp;quot;file.csv&amp;quot; -Encoding UTF8&lt;/span&gt;
+
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt; = 75&lt;/span&gt;
+
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile_split&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="x"&gt; / &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;floor&lt;/span&gt;&lt;span class="x"&gt; = [math]::Floor(&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile_split&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ceiling&lt;/span&gt;&lt;span class="x"&gt; = [math]::Ceiling(&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile_split&lt;/span&gt;&lt;span class="x"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;excess&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="x"&gt; % &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="x"&gt; = 0&lt;/span&gt;
+&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt; - 1&lt;/span&gt;
+
+&lt;span class="x"&gt;switch (&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;excess&lt;/span&gt;&lt;span class="x"&gt; -gt 0)&lt;/span&gt;
+&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;true&lt;/span&gt;&lt;span class="x"&gt;   &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;upper&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;ceiling&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;false&lt;/span&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;upper&lt;/span&gt;&lt;span class="x"&gt; = &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;floor&lt;/span&gt;&lt;span class="x"&gt; }&lt;/span&gt;
+&lt;span class="x"&gt;}&lt;/span&gt;
+
+&lt;span class="x"&gt;for (&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="x"&gt; = 1; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="x"&gt; -le &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;upper&lt;/span&gt;&lt;span class="x"&gt;; &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="x"&gt;++) &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="x"&gt;[&lt;/span&gt;&lt;span class="p"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="x"&gt;..&lt;/span&gt;&lt;span class="p"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="x"&gt;] | export-csv &amp;quot;split&lt;/span&gt;&lt;span class="p"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nv"&gt;csv&lt;/span&gt;&lt;span class="x"&gt;&amp;quot; -notypeinformation -Encoding UTF8&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="x"&gt; += &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="x"&gt; += &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;split&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="programming"></category><category term="PowerShell"></category><category term="scripting"></category><category term="IT"></category></entry><entry><title>Mega Product Review Blitz! (part 2)</title><link href="http://localhost:8000/posts/2015/Jul/20/mega-product-review-blitz-part-2.html" rel="alternate"></link><updated>2015-07-21T00:00:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-20:posts/2015/Jul/20/mega-product-review-blitz-part-2.html</id><summary type="html">
 
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;.  I&amp;rsquo;ve been a bit delinquent on some of my product reviews, so I&amp;rsquo;m going to bundle a bunch of them together in this article. I&amp;rsquo;ve posted reviews to Amazon, but not everyone checks there (or here, for that&amp;nbsp;matter).&lt;/p&gt;
 &lt;p&gt;Now time for &lt;strong&gt;Blitz Review&amp;nbsp;#2!!&lt;/strong&gt;&lt;/p&gt;
@@ -59,7 +123,7 @@
 &lt;li&gt;Reference &lt;span class="caps"&gt;ID&lt;/span&gt;:&amp;nbsp;pme624d754286d0aac962f185f1a21809e&lt;/li&gt;
 &lt;li&gt;Reference &lt;span class="caps"&gt;ID&lt;/span&gt;:&amp;nbsp;pm739465804a0e17d2a47c9bc9c805d60a&lt;/li&gt;
 &lt;li&gt;Reference &lt;span class="caps"&gt;ID&lt;/span&gt;:&amp;nbsp;prcf004fdc76fa1a4f25f62e0eb5261ca3&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="review"></category></entry><entry><title>Mega Product Review Blitz! (part 1)</title><link href="http://localhost:8000/posts/2015/Jul/17/mega-product-review-blitz-part-1.html" rel="alternate"></link><updated>2015-07-19T12:52:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-17:posts/2015/Jul/17/mega-product-review-blitz-part-1.html</id><summary type="html">
+&lt;/ul&gt;</summary><category term="review"></category><category term="Bluetooth"></category><category term="headphones"></category><category term="speaker"></category><category term="water bottle"></category><category term="kitchen"></category></entry><entry><title>Mega Product Review Blitz! (part 1)</title><link href="http://localhost:8000/posts/2015/Jul/17/mega-product-review-blitz-part-1.html" rel="alternate"></link><updated>2015-07-19T12:52:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-17:posts/2015/Jul/17/mega-product-review-blitz-part-1.html</id><summary type="html">
 
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;.  I&amp;rsquo;ve been a bit delinquent on some of my product reviews, so I&amp;rsquo;m going to bundle a bunch of them together in this article. I&amp;rsquo;ve posted reviews to Amazon, but not everyone checks there (or here, for that&amp;nbsp;matter).&lt;/p&gt;
 &lt;h1&gt;&lt;/h1&gt;
