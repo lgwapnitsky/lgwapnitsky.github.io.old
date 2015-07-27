@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Larry G. Wapnitsky</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/larry-g-wapnitsky.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-23T00:00:00-04:00</updated><entry><title>Splitting a CSV in PowerShell</title><link href="http://localhost:8000/posts/2015/Jul/23/splitting-a-csv-in-powershell.html" rel="alternate"></link><updated>2015-07-23T00:00:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-23:posts/2015/Jul/23/splitting-a-csv-in-powershell.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Larry G. Wapnitsky</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/larry-g-wapnitsky.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-23T00:00:00-04:00</updated><entry><title>Mega Product Review Blitz! (part 3)</title><link href="http://localhost:8000/posts/2015/Jul/24/mega-product-review-blitz-part-3.html" rel="alternate"></link><updated>2015-07-21T00:00:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-24:posts/2015/Jul/24/mega-product-review-blitz-part-3.html</id><summary type="html">
 
-&lt;p&gt;Today I had a need to split some &lt;span class="caps"&gt;CSV&lt;/span&gt; (comma-separated value) files to run on a program that had limits to the size it could read.  I found a number of solutions out there to do what I wanted in PowerShell, but many were a bit more complex than I needed, so I wrote my own.
-&lt;!-- PELICAN END SUMMARY --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.tomoson.com/?code=TOP9428f9776a62fb1f566d8089591a2109" rel="nofollow"&gt;&lt;img style="display: none" src="http://www.tomoson.com/images/front/pixel.png" /&gt;&lt;/a&gt;
+&lt;a href="http://www.tomoson.com/?code=TOP755eb9d26ddd5758cb601666436cc0f8" rel="nofollow"&gt;&lt;img style="display: none" src="http://www.tomoson.com/images/front/pixel.png" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;.  I&amp;rsquo;ve been a bit delinquent on some of my product reviews, so I&amp;rsquo;m going to bundle a bunch of them together in this article. I&amp;rsquo;ve posted reviews to Amazon, but not everyone checks there (or here, for that&amp;nbsp;matter).&lt;/p&gt;
+&lt;p&gt;Now time for &lt;strong&gt;Blitz Review&amp;nbsp;#3!!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inline_collage" src="/images/reviews/blitzreview3collage.jpg" /&gt;&lt;/p&gt;
+
+
+&lt;h2&gt;GioSport Running&amp;nbsp;Belt&lt;/h2&gt;
+&lt;p&gt;As a runner, I tend to need to carry important things with me - my keys, phone, &lt;span class="caps"&gt;ID&lt;/span&gt;, money, etc. Running with this stuff in my pockets is not comfortable, and the jangly bounce of keys and a wallet can really screw with my pace. That&amp;rsquo;s where the GioSport Running Belt comes into&amp;nbsp;play.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inline_GioSportPouch" src="/images/reviews/GioSportPouch.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;This belt wound up being almost perfect for me (I&amp;rsquo;ll explain). It was easy to get around my waist, cinched tightly with the clips, and felt as though there was nothing around my waist. I added some money, a key, my &lt;span class="caps"&gt;ID&lt;/span&gt;. No issues. Then it came to my&amp;nbsp;phone.&lt;/p&gt;
+&lt;p&gt;This pouch is designed to hold the iPhone 6. I own a Nexus 6, which is almost the same size. With my protective case on, I was not able to get the phone in the pouch. Once the case came off, it was good. I wasn&amp;rsquo;t too worried, as I have a glass protector (and insurance) on the phone, but it&amp;rsquo;s something to be conscious&amp;nbsp;of.&lt;/p&gt;
+&lt;p&gt;One other plus on this pouch is the &amp;ldquo;porthole&amp;rdquo;. For the most part, this is used for wired headphones to go directly to the phone. I found a better use for it - run a &lt;span class="caps"&gt;USB&lt;/span&gt; charger cable from the phone through the porthole to a battery pack in my backpack. With some simple maneuvering of the wire, it&amp;rsquo;s really easy to get that extra power while out on a long&amp;nbsp;run.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re planning on running (or any outdoor activity), and want a good belt\pouch to hold your stuff, definitely pick one of these up from &lt;a href="http://www.amazon.com/dp/B00WJR6RYA" target="_blank"&gt;Amazon&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Aqua Dance Handheld 5 Function Showerhead -&amp;nbsp;Chrome&lt;/h2&gt;
+&lt;p&gt;Easy to install. Took almost no time, and the included Teflon tape was a&amp;nbsp;bonus.&lt;/p&gt;
+&lt;p&gt;What didn&amp;rsquo;t I like? Pressure seems light. Two of the five settings seemed to do the same thing, and one dribbled water and makes a horribly screeching&amp;nbsp;sound.&lt;/p&gt;
+&lt;p&gt;I removed the water regulator, and the pressure removed, except on that screeching&amp;nbsp;setting.&lt;/p&gt;
+&lt;p&gt;Overall, not bad, but I&amp;rsquo;m not sure if I&amp;rsquo;d get it&amp;nbsp;again.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.target.com/p/aqua-dance-handheld-5-function-showerhead-chrome/-/A-17217087" target="_blank"&gt;Target&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Quicklids Silicone Suction Lids and Food&amp;nbsp;Covers&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Inline_quicklids" src="/images/reviews/siliconequicklids.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m simply blown away by how good these lids are. Long gone are the days of using an ill-fitting paper plate or paper towels to cover dishes as I&amp;rsquo;m reheating them. Additionally, these are so much easier to clean &lt;span class="caps"&gt;AND&lt;/span&gt; are environmentally friendly by virtue of being&amp;nbsp;reusable.&lt;/p&gt;
+&lt;p&gt;If I had a need for more of these, I&amp;rsquo;d buy them in a&amp;nbsp;heartbeat.&lt;/p&gt;
+&lt;p&gt;Only thing I&amp;rsquo;d look for is maybe a smaller version for&amp;nbsp;ramekins\mugs&lt;/p&gt;
+&lt;p&gt;Tired of making a mess? Get yours on &lt;a href="http://smile.amazon.com/gp/product/B00SM6B11G" target="_blank"&gt;Amazon&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Stainless Aeropress&amp;nbsp;Filter&lt;/h2&gt;
+&lt;p&gt;I love my &lt;a href="http://smile.amazon.com/Aeropress-Coffee-and-Espresso-Maker/dp/B0047BIWSK/ref=pd_bxgy_79_text_y" target="_blank"&gt;Aeropress&lt;/a&gt;. I love it so much, I bought a second one to keep at my parents&amp;rsquo; house, but, since I&amp;rsquo;m there so rarely, it&amp;rsquo;s now at my desk in my office so that I don&amp;rsquo;t have to drink from the K-cups. The one thing I&amp;rsquo;ve never liked, though, is the paper filters. With one small move of the hand, the filters can get knocked over in their lovely stand and wind up all over the place. Yes, they&amp;rsquo;re cheap, but they&amp;rsquo;re also flimsy. They also don&amp;rsquo;t let the best of the oils, etc. through.  That&amp;rsquo;s where this filter comes&amp;nbsp;in.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inline_AFilter" src="/images/reviews/AeropressFilter1.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Just take a look at this hi-res shot. You can clearly see the fine mesh which lets more oils, yet still very little water (without pressure) through the filter. It&amp;rsquo;s stainless steel, so it&amp;rsquo;s easy to clean and reuse immediately (for those friends\family who want &lt;em&gt;decaf&lt;/em&gt;). Best of all, since it&amp;rsquo;s reusable, you don&amp;rsquo;t have to worry about filling your garbage with the little paper&amp;nbsp;filters.&lt;/p&gt;
+&lt;p&gt;Own an Aeropress? &lt;a href="http://smile.amazon.com/gp/product/B00R26BFZE" target="_blank"&gt;Get one of these filters&lt;/a&gt; &lt;span class="caps"&gt;NOW&lt;/span&gt;!&lt;/p&gt;
+&lt;p&gt;If you don&amp;rsquo;t own an &lt;a href="http://smile.amazon.com/Aeropress-Coffee-and-Espresso-Maker/dp/B0047BIWSK/ref=pd_bxgy_79_text_y" target="_blank"&gt;Aeropress&lt;/a&gt;, why not?  Get&amp;nbsp;one!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Disclosure: I received one or more of the products mentioned above in exchange for review from Giveaway Service website. Regardless, I only recommend products or services I use personally and believe will be good for my&amp;nbsp;readers.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reference &lt;span class="caps"&gt;ID&lt;/span&gt;:&amp;nbsp;pm022823b8aa03cffdb1189da300c18b25&lt;/li&gt;
+&lt;li&gt;Reference &lt;span class="caps"&gt;ID&lt;/span&gt;:&amp;nbsp;pmc9509ee01ad2ea5510724dd43d2ea4c5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://www.tomoson.com/?code=BOTTOM755eb9d26ddd5758cb601666436cc0f8" rel="nofollow"&gt;&lt;img style="display: none" src="http://www.tomoson.com/images/front/pixel.png" /&gt;&lt;/a&gt;
+&lt;a href="http://www.tomoson.com/?code=BOTTOM9428f9776a62fb1f566d8089591a2109" rel="nofollow"&gt;&lt;img style="display: none" src="http://www.tomoson.com/images/front/pixel.png" /&gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="review"></category><category term="Aeropress"></category><category term="coffee"></category><category term="running"></category><category term="accessories"></category><category term="kitchen"></category><category term="shower"></category><category term="bathroom"></category></entry><entry><title>Splitting a CSV in PowerShell</title><link href="http://localhost:8000/posts/2015/Jul/23/splitting-a-csv-in-powershell.html" rel="alternate"></link><updated>2015-07-23T00:00:00-04:00</updated><author><name>Larry G. Wapnitsky</name></author><id>tag:localhost:8000,2015-07-23:posts/2015/Jul/23/splitting-a-csv-in-powershell.html</id><summary type="html">
+
+&lt;p&gt;Today I had a need to split some &lt;span class="caps"&gt;CSV&lt;/span&gt; (comma-separated value) files to run on a program that had limits to the size it could read.  I found a number of solutions out there to do what I wanted in PowerShell, but many were a bit more complex than I needed, so I wrote my&amp;nbsp;own.&lt;/p&gt;
+&lt;!-- PELICAN END SUMMARY --&gt;
+
 &lt;p&gt;To simplify things for my needs, I hard-coded my major variables, but changing this to a cmdlet with modular parameters won&amp;rsquo;t be that&amp;nbsp;difficult.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;csvfile&lt;/span&gt;&lt;span class="x"&gt; = import-csv &amp;quot;file.csv&amp;quot; -Encoding UTF8&lt;/span&gt;
 
