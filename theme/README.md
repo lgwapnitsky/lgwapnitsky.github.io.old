@@ -23,7 +23,7 @@ Now you can download the PSD file
     digitWidth: 53,
     digitHeight: 77,
     timerEnd: function() { alert('end!!'); },
-    image: "digits.png"
+    image: t/100x/"digits.png"
   });
 ```
 
@@ -35,7 +35,7 @@ Now you can download the PSD file
     startTime: "120",
     continuous: true,
     timerEnd: function() { alert('end!!'); },
-    image: "digits.png"
+    image: t/100x/"digits.png"
   });
 ```
 
@@ -45,7 +45,7 @@ Relative to current hour:
 
 ```javascript
   $('#counter').countdown({
-    image: "digits.png",
+    image: t/100x/"digits.png",
     format: "mm:ss",
     endTime: '50:00'
   });
@@ -56,7 +56,7 @@ An absolute date:
 
 ```javascript
   $('#counter').countdown({
-    image: "digits.png",
+    image: t/100x/"digits.png",
     format: "mm:ss",
     endTime: new Date('07/16/13 05:00:00')
   });
